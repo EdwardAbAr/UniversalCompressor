@@ -93,7 +93,7 @@ namespace Compressor.Compresion.LZ78
             int cantidadTokens = lector.ReadInt32();
 
             var diccionario = new List<byte[]>();
-            diccionario.Add(Array.Empty<byte>()); // índice 0 = vacío
+            diccionario.Add(Array.Empty<byte>()); // índice 0
 
             for (int i = 0; i < cantidadTokens; i++)
             {

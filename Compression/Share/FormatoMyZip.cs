@@ -13,10 +13,10 @@ namespace Compressor.Compresion.Share
             byte[] datosOriginales,
             byte[] datosComprimidos)
         {
-            // 1 byte: algoritmo
+          
             escritor.Write((byte)algoritmo);
 
-            // Nombre de archivo
+            // Nombre del archivo
             byte[] nombreBytes = Encoding.UTF8.GetBytes(nombreArchivo);
             escritor.Write(nombreBytes.Length);
             escritor.Write(nombreBytes);
@@ -25,7 +25,7 @@ namespace Compressor.Compresion.Share
             escritor.Write((long)datosOriginales.Length);
             escritor.Write((long)datosComprimidos.Length);
 
-            // Datos comprimidos
+            // informacion comprimida
             escritor.Write(datosComprimidos);
         }
 
