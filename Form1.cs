@@ -88,9 +88,9 @@ namespace Compressor
             }
 
             using var sfd = new SaveFileDialog();
-            sfd.Filter = "Archivo comprimido|*.CE";
+            sfd.Filter = "Archivo comprimido|*.myzip";
 
-            // Nombre  para el comprimido
+            // Nombre  para el .myzip
             string nombreBase;
 
             if (_archivosSeleccionados.Count == 1)
@@ -103,7 +103,7 @@ namespace Compressor
                 nombreBase = Path.GetFileNameWithoutExtension(_archivosSeleccionados[0]) + "_varios";
             }
 
-            sfd.FileName = nombreBase + ".CE";
+            sfd.FileName = nombreBase + ".myzip";
 
             if (sfd.ShowDialog() != DialogResult.OK)
                 return;
@@ -134,7 +134,7 @@ namespace Compressor
 
                     string nombreSolo = Path.GetFileName(archivo);
 
-                    FormatoCE.EscribirEntrada(
+                    FormatoMyZip.EscribirEntrada(
                         escritor,
                         algoritmoEnum,
                         nombreSolo,
@@ -163,12 +163,12 @@ namespace Compressor
         private void btnDescomprimir_Click(object sender, EventArgs e)
         {
             using var ofd = new OpenFileDialog();
-            ofd.Filter = "Archivo comprimido|*.CE";
+            ofd.Filter = "Archivo comprimido|*.myzip";
 
             if (ofd.ShowDialog() != DialogResult.OK)
             {
                 MessageBox.Show(
-                    "Por favor seleccione un archivo .CE para descomprimir.",
+                    "Por favor seleccione un archivo .myzip para descomprimir.",
                     "Advertencia",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
@@ -199,7 +199,7 @@ namespace Compressor
             using (var fs = new FileStream(archivoEntrada, FileMode.Open))
             using (var lector = new BinaryReader(fs))
             {
-                while (FormatoCE.IntentarLeerEntrada(
+                while (FormatoMyZip.IntentarLeerEntrada(
                            lector,
                            out AlgoritmoCompresion algoritmo,
                            out string nombreArchivo,
@@ -219,7 +219,7 @@ namespace Compressor
                     string rutaSalida = Path.Combine(carpetaSalida, nombreArchivo);
                     File.WriteAllBytes(rutaSalida, datosDescomprimidos);
 
-
+                    
                     totalOriginal += longitudOriginal;
                     totalComprimido += datosComprimidos.Length;
                 }
@@ -237,7 +237,7 @@ namespace Compressor
                     : 0.0
             };
 
-            // Mostrar estadísticas
+            // Mostrar estadísticas 
             lblTiempo.Text = $"Tiempo (descompresión): {estadisticas.TiempoTranscurrido.TotalMilliseconds:F2} ms";
             lblMemoria.Text = $"Memoria (descompresión): {estadisticas.MemoriaUsadaBytes} bytes";
             lblTasa.Text = $"Tasa: {estadisticas.TasaCompresion:P2}";
