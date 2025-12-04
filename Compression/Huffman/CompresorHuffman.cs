@@ -13,7 +13,7 @@ namespace Compressor.Compresion.Huffman
             if (entrada == null || entrada.Length == 0)
                 return Array.Empty<byte>();
 
-            // Contar frecuencias
+            // Contar frecuencias de aparición
             var frecuencias = new Dictionary<byte, int>();
             foreach (var b in entrada)
             {
@@ -22,7 +22,7 @@ namespace Compressor.Compresion.Huffman
                 frecuencias[b]++;
             }
 
-            // hacer el árbol 
+            // Hacer el árbol de prioridad
             var cola = new PriorityQueue<NodoHuffman, int>();
             foreach (var kv in frecuencias)
             {
@@ -74,7 +74,7 @@ namespace Compressor.Compresion.Huffman
                     cadenaBits.Append(codigos[b]);
                 }
 
-                // Bits -> bytes
+                // convierte Bits bytes
                 byte byteActual = 0;
                 int conteoBits = 0;
                 var listaBytes = new List<byte>();
