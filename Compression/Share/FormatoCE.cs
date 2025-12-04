@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Compressor.Compresion.Share
 {
-    public static class FormatoMyZip
+    public static class FormatoCE
     {
         public static void EscribirEntrada(
             BinaryWriter escritor,
@@ -13,7 +13,7 @@ namespace Compressor.Compresion.Share
             byte[] datosOriginales,
             byte[] datosComprimidos)
         {
-          
+
             escritor.Write((byte)algoritmo);
 
             // Nombre del archivo

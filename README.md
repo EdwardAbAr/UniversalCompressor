@@ -3,7 +3,7 @@ Read Me
 # UniversalCompressor – Aplicación de compresión y descompresión
 
 Esta aplicación de escritorio en C# permite comprimir y descomprimir archivos de texto utilizando distintos algoritmos de compresión (Huffman, LZ77 y LZ78).  
-El resultado de la compresión se guarda en archivos con extensión `.myzip` (formato propio del proyecto).
+El resultado de la compresión se guarda en archivos con extensión `.CE` (formato propio del proyecto).
 
 ---
 
@@ -55,35 +55,35 @@ Para comprimir uno o varios archivos:
 5. Presionar el botón “Comprimir”.
    - Si no hay archivos seleccionados, la aplicación mostrará un mensaje de advertencia indicando que se debe seleccionar al menos un archivo.
 6. Se abrirá un cuadro de Guardar archivo:
-   - El nombre sugerido del archivo `.myzip` se basa en el nombre del archivo original (por ejemplo, `almibar.txt` → `almibar.myzip`).
-   - Si se seleccionaron varios archivos, se propone un nombre base ajustado (por ejemplo, `almibar_varios.myzip`).
+   - El nombre sugerido del archivo `.CE` se basa en el nombre del archivo original (por ejemplo, `Documentacion.txt` → `Documentacion.CE`).
+   - Si se seleccionaron varios archivos, se propone un nombre base ajustado (por ejemplo, `Documento_varios.CE`).
 7. Elegir la carpeta de destino y confirmar.
 8. Una vez finalizado el proceso, en la ventana principal se actualizan:
    - *Tiempo* que tardó la compresión.
    - *Memoria* estimada utilizada durante el proceso.
    - *Tasa de compresión* (tamaño comprimido / tamaño original).
 
-El archivo comprimido `.myzip` quedará guardado en la ruta que el usuario haya elegido.
+El archivo comprimido `.CE` quedará guardado en la ruta que el usuario haya elegido.
 
 ---
 
-### 3.2. Descompresión de archivos `.myzip`
+### 3.2. Descompresión de archivos `.CE`
 
 Para descomprimir un archivo generado por la aplicación:
 
 > Importante: la descompresión **NO** utiliza el botón “Seleccionar archivos”.  
-> Siempre debe iniciarse desde el botón *“Descomprimir”* para que se puedan seleccionar archivos `.myzip`.
+> Siempre debe iniciarse desde el botón *“Descomprimir”* para que se puedan seleccionar archivos `.CE`.
 
 1. Presionar el botón *“Descomprimir”*.
 2. En el cuadro de diálogo:
-   - Elegir un archivo con extensión `.myzip` generado por esta aplicación.
-   - Si se cancela el cuadro sin seleccionar nada, se mostrará una advertencia indicando que se debe elegir un archivo `.myzip`.
+   - Elegir un archivo con extensión `.CE` generado por esta aplicación.
+   - Si se cancela el cuadro sin seleccionar nada, se mostrará una advertencia indicando que se debe elegir un archivo `.CE`.
 3. Confirmar la selección.
 4. La aplicación descomprimirá el contenido utilizando automáticamente el algoritmo que fue usado al comprimir.
 5. Los archivos descomprimidos se guardan en una carpeta nueva creada junto al archivo de origen, con el siguiente formato:
 
    - Si el archivo de entrada es:  
-     `C:\Ruta\almibar.myzip`  
+     `C:\Ruta\almibar.CE`  
    - La carpeta de salida será:  
      `C:\Ruta\almibar_out\`
 
@@ -93,7 +93,7 @@ Para descomprimir un archivo generado por la aplicación:
 7. En la ventana principal se actualizarán también las estadísticas de la *última descompresión* realizada:
    - *Tiempo* total de descompresión.
    - *Memoria* estimada utilizada.
-   - *Tasa* calculada a partir del tamaño original y del tamaño comprimido almacenado en el `.myzip`.
+   - *Tasa* calculada a partir del tamaño original y del tamaño comprimido almacenado en el `.CE`.
 
 ---
 
@@ -102,5 +102,5 @@ Para descomprimir un archivo generado por la aplicación:
 - Si se intenta comprimir sin haber seleccionado archivos, se mostrará un cuadro de diálogo de advertencia solicitando que se seleccione al menos un archivo antes de comprimir.
 - Para descomprimir:
   - Es obligatorio iniciar desde el botón **“Descomprimir”**.
-  - Si se cierra el cuadro de selección sin elegir un `.myzip`, se mostrará una advertencia.
+  - Si se cierra el cuadro de selección sin elegir un `.CE`, se mostrará una advertencia.
 - La aplicación muestra estadísticas (tiempo, memoria y tasa) tanto al **comprimir** como al **descomprimir**, siempre sobre la última operación realizada.
