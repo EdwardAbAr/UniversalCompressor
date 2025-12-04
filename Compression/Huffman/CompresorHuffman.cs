@@ -13,7 +13,7 @@ namespace Compressor.Compresion.Huffman
             if (entrada == null || entrada.Length == 0)
                 return Array.Empty<byte>();
 
-            // 1. Contar frecuencias
+            // Contar frecuencias
             var frecuencias = new Dictionary<byte, int>();
             foreach (var b in entrada)
             {
@@ -22,7 +22,7 @@ namespace Compressor.Compresion.Huffman
                 frecuencias[b]++;
             }
 
-            // 2. Construir árbol con PriorityQueue
+            // hacer el árbol 
             var cola = new PriorityQueue<NodoHuffman, int>();
             foreach (var kv in frecuencias)
             {
@@ -52,15 +52,15 @@ namespace Compressor.Compresion.Huffman
 
             cola.TryDequeue(out var raiz, out _);
 
-            // 3. Generar códigos
+            // genera codigos
             var codigos = new Dictionary<byte, string>();
             ConstruirCodigos(raiz, "", codigos);
 
-            // 4. Guardar frecuencias + bits
+            // frecuencia+bits
             using var ms = new MemoryStream();
             using (var escritor = new BinaryWriter(ms, Encoding.UTF8, true))
             {
-                // Cantidad de símbolos
+                // Simbolos
                 escritor.Write(frecuencias.Count);
                 foreach (var kv in frecuencias)
                 {
@@ -68,7 +68,6 @@ namespace Compressor.Compresion.Huffman
                     escritor.Write(kv.Value);  // frecuencia
                 }
 
-                // Codificar datos
                 var cadenaBits = new StringBuilder();
                 foreach (var b in entrada)
                 {
@@ -142,7 +141,7 @@ namespace Compressor.Compresion.Huffman
                 frecuencias[simbolo] = frecuencia;
             }
 
-            // Reconstruir árbol
+            // Reconstruye el árbol
             var cola = new PriorityQueue<NodoHuffman, int>();
             foreach (var kv in frecuencias)
             {
