@@ -128,7 +128,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightGray;
-            ClientSize = new Size(512, 380);
+            ClientSize = new Size(548, 380);
             Controls.Add(labeltipo);
             Controls.Add(lblTasa);
             Controls.Add(lblMemoria);
